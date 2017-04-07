@@ -16,7 +16,7 @@ public class MainActivity extends YouTubeBaseActivity {
     YouTubePlayer.OnInitializedListener onInitializedListener;
 
     private ProgressDialog pDialog;
-    JSONParser jsonParser = new JSONParser();
+    JSONparser jsonParser = new JSONparser();
 
     //Youtube Player
     @Override

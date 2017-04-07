@@ -21,7 +21,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-public class JSONParser {
+public class JSONparser {
 
     static InputStream is = null;
     static JSONObject jObj = null;
@@ -31,7 +31,7 @@ public class JSONParser {
     EditText editText2;
 
     // constructor
-    public JSONParser() {
+    public JSONparser() {
 
     }
 
@@ -101,4 +101,5 @@ public class JSONParser {
         return jObj;
 
     }
+
 }
