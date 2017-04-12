@@ -1,9 +1,9 @@
 json already is our api in array format
 
 for element in json:  
-  for "name" in element:  
-    button.text = name;   
-   for "value" in element:  
-     button.text = value;  
+  /t for "name" in element:  
+   /t/t button.text = name;   
+   /t for "value" in element:  
+     /t/t button.text = value;  
   
 
