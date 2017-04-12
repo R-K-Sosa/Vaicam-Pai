@@ -1,24 +1,28 @@
-from flask import Flask
+from flask import Flask, jsonify
 import requests
-import os
+import glob
 from clarifai.rest import Image as ClImage, ClarifaiApp
+import json
+
+import os
+app = ClarifaiApp('3sV5ZqH5HPz-obqWgk8m7iBHHf41IDhHHr_wUGaT', '91Mg1OCiSKYMemuJWt5GBWmK-FKmxOQ3DJmarLuY')
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
 
 @app.route("/")
 def hello():
     app = ClarifaiApp('3sV5ZqH5HPz-obqWgk8m7iBHHf41IDhHHr_wUGaT', '91Mg1OCiSKYMemuJWt5GBWmK-FKmxOQ3DJmarLuY')
 
     model = app.models.get('aaa03c23b3724a16a56b629203edc62c')
-    list = []
-    resultlist = []
-    x = 1
-    while True:
-        result = model.predict_by_filename('out%d.png' % x)
-        for concept in result.get("outputs")[0].get("data").get("concepts"):
-            return str(concept)
-        os.remove('out%d.png' % x)
-        x = x + 1;
+
+    newest = min(glob.iglob('*.jpg'), key=os.path.getctime)
+
+    result = model.predict_by_filename(newest)
+
+    con = result.get("outputs")[0].get("data").get("concepts")
+
+    return jsonify(con)
 
 if __name__ == "__main__":
     app.run()
