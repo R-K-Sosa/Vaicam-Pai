@@ -40,7 +40,7 @@ public class JsonReader {
     }
 
     public static void main(String[] args) throws IOException, JSONException {
-        JSONObject json = readJsonFromUrl("https://graph.facebook.com/19292868552");
+        JSONObject json = readJsonFromUrl("https://105ba16f.ngrok.io/");
         System.out.println(json.toString());
         System.out.println(json.get("id"));
     }
