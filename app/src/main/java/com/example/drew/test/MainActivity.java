@@ -1,7 +1,9 @@
 package com.example.drew.test;
 
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -9,6 +11,9 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.android.youtube.player.YouTubeStandalonePlayer;
+
+import java.util.List;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,32 +31,36 @@ public class MainActivity extends YouTubeBaseActivity {
     Button button;
     YouTubePlayer.OnInitializedListener onInitializedListener;
 
-
     //Youtube Player
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = (Button)findViewById(R.id.bn);
-        youtubePlayerView = (YouTubePlayerView)findViewById(R.id.youtube_player_view);
-        onInitializedListener = new YouTubePlayer.OnInitializedListener(){
+        button = (Button) findViewById(R.id.bn);
+        youtubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player_view);
+        onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-            youTubePlayer.loadVideo("wRFs1_BL9zw");
+                youTubePlayer.loadVideo("1rdSjaohWkI");
             }
+
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
             }
         };
 
-        button.setOnClickListener (new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View v) {
+            public void onClick(View v) {
                 youtubePlayerView.initialize(COnfig.API_KEY, onInitializedListener);
             }
         });
 
+        Log.e("asdkjhf", "asdjhfk");
+
+
     }
+<<<<<<< Updated upstream
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
@@ -78,4 +87,8 @@ public class MainActivity extends YouTubeBaseActivity {
         System.out.println(json.toString());
         System.out.println(json.get("id"));
     }
+=======
+
+>>>>>>> Stashed changes
 }
+
