@@ -60,7 +60,7 @@ public class MainActivity extends YouTubeBaseActivity {
 
 
     }
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
@@ -87,8 +87,8 @@ public class MainActivity extends YouTubeBaseActivity {
         System.out.println(json.toString());
         System.out.println(json.get("id"));
     }
-=======
+//=======
 
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
 }
 

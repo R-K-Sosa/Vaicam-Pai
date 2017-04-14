@@ -19,6 +19,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/bn"
+        android:width="250dp"
+        android:textSize="25dp"
+        android:height="50dp"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/youtube_player_view"
         android:layout_centerHorizontal="true" />
