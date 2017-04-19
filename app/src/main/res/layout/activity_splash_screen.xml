@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#abcdef"
+    android:background="#ffffff"
     tools:context="com.example.drew.test.SplashScreen">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/pi_cam"
+        android:background="@drawable/pi_cam_bg"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="118dp" />
+        android:layout_marginTop="85dp"
+        android:layout_marginBottom="85dp"/>
 </RelativeLayout>
