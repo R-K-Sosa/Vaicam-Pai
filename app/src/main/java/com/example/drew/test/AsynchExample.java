@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import android.widget.TextView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,7 +41,7 @@ public class AsynchExample extends Activity {
         new AsyncCaller().execute();
     }
 
-    private class AsyncCaller extends AsyncTask<Void, Void, Void>
+    private class AsyncCaller extends AsyncTask<Void, String, Void>
     {
         public AsyncCaller() {
             super();
@@ -67,13 +65,24 @@ public class AsynchExample extends Activity {
                 e.printStackTrace();
             }
             rightCookie = json.toString();
+            this.publishProgress(rightCookie);
             System.out.println(rightCookie + "this worked");
             return null;
         }
 
         @Override
+        protected void onProgressUpdate(String... values){
+            super.onProgressUpdate(values);
+            System.out.println(rightCookie + "asdf");
+            TextView waffo = (TextView) findViewById(R.id.textView2);
+            waffo.setText(rightCookie + "....hello");
+        }
+
+        @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
+//            TextView textView = (TextView) findViewById(R.id.textView);
+//            textView.setText(rightCookie + "....hello");
 //            Toast.makeText(getApplicationContext(), rightNipple.toString() + "Fish",
 //                    Toast.LENGTH_LONG).show();
             //this method will be running on UI thread

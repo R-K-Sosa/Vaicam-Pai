@@ -8,8 +8,8 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.content.Intent;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -31,16 +31,15 @@ public class MainActivity extends YouTubeBaseActivity {
 
         public void onReceive(Context context,Intent intent) {
             // Get extra data included in the Intent
-
             String message = intent.getStringExtra("data");
-            TextView textView = (TextView) findViewById(R.id.textView);
+               TextView textView = (TextView) findViewById(R.id.textView);
             Toast.makeText(getApplicationContext(), "Received",
                     Toast.LENGTH_LONG).show();
-            AsynchExample mellow = new AsynchExample();
-            textView.setText(mellow.activate() + "....hello");
-            System.out.println(mellow.activate() + "....hello");
-            Toast.makeText(getApplicationContext(), mellow.activate(),
-                    Toast.LENGTH_LONG).show();
+
+//            textView.setText(mellow.activate() + "....hello");
+//            System.out.println(mellow.activate() + "....hello");
+//            Toast.makeText(getApplicationContext(), mellow.activate(),
+//                    Toast.LENGTH_LONG).show();
         }
     };
 
@@ -50,6 +49,10 @@ public class MainActivity extends YouTubeBaseActivity {
     //Youtube Player
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AsynchExample mellow = new AsynchExample();
+        System.out.println(mellow.activate() + "....hello");
+        Toast.makeText(getApplicationContext(), mellow.activate(),
+                Toast.LENGTH_LONG).show();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = (Button) findViewById(R.id.bn);
@@ -80,16 +83,5 @@ public class MainActivity extends YouTubeBaseActivity {
                 youtubePlayerView.initialize(COnfig.API_KEY, onInitializedListener);
             }
         });
-
-
     }
-    /*public LocalBroadcastManager mMessageReceiver = new LocalBroadcastManager() {
-
-        public void onReceive(Intent intent) {
-            // Get extra data included in the Intent
-            String message = intent.getStringExtra("data");
-            TextView textView = (TextView) findViewById(R.id.textView);
-            textView.setText(message);
-        }
-    };*/
     }
