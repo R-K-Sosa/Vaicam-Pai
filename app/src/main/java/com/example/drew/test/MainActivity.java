@@ -32,7 +32,6 @@ public class MainActivity extends YouTubeBaseActivity {
         public void onReceive(Context context,Intent intent) {
             // Get extra data included in the Intent
             String message = intent.getStringExtra("data");
-               TextView textView = (TextView) findViewById(R.id.textView);
             Toast.makeText(getApplicationContext(), "Received",
                     Toast.LENGTH_LONG).show();
 
@@ -49,12 +48,11 @@ public class MainActivity extends YouTubeBaseActivity {
     //Youtube Player
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        AsynchExample mellow = new AsynchExample();
-        System.out.println(mellow.activate() + "....hello");
-        Toast.makeText(getApplicationContext(), mellow.activate(),
-                Toast.LENGTH_LONG).show();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AsynchExample mellow = new AsynchExample();
+        System.out.println(mellow.activate() + "....hello");
+
         button = (Button) findViewById(R.id.bn);
         youtubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player_view);
 

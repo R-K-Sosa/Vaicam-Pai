@@ -74,8 +74,9 @@ public class AsynchExample extends Activity {
         protected void onProgressUpdate(String... values){
             super.onProgressUpdate(values);
             System.out.println(rightCookie + "asdf");
-            TextView waffo = (TextView) findViewById(R.id.textView2);
-            waffo.setText(rightCookie + "....hello");
+            //78 and 79 are very special, maybe you can get them to work :) set text in asyncTask https://www.quandl.com/api/v3/datasets/ODA/PBARL_USD.json?api_key=E-f4bGCzj_cGGgo-6RsR
+//            TextView textView = (TextView) findViewById(R.id.textView);
+//            textView.setText(rightCookie + "....hello");
         }
 
         @Override
@@ -83,8 +84,7 @@ public class AsynchExample extends Activity {
             super.onPostExecute(result);
 //            TextView textView = (TextView) findViewById(R.id.textView);
 //            textView.setText(rightCookie + "....hello");
-//            Toast.makeText(getApplicationContext(), rightNipple.toString() + "Fish",
-//                    Toast.LENGTH_LONG).show();
+
             //this method will be running on UI thread
         }
     }
