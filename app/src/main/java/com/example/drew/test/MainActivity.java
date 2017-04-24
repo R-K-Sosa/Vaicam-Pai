@@ -1,6 +1,5 @@
 package com.example.drew.test;
 
-import android.os.Looper;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -19,10 +18,8 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import org.json.JSONException;
-
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+
 
 public class MainActivity extends YouTubeBaseActivity {
     YouTubePlayerView youtubePlayerView;
@@ -37,10 +34,13 @@ public class MainActivity extends YouTubeBaseActivity {
 
             String message = intent.getStringExtra("data");
             TextView textView = (TextView) findViewById(R.id.textView);
-
+            Toast.makeText(getApplicationContext(), "Received",
+                    Toast.LENGTH_LONG).show();
             AsynchExample mellow = new AsynchExample();
-
-            textView.setText(mellow.activate());
+            textView.setText(mellow.activate() + "....hello");
+            System.out.println(mellow.activate() + "....hello");
+            Toast.makeText(getApplicationContext(), mellow.activate(),
+                    Toast.LENGTH_LONG).show();
         }
     };
 

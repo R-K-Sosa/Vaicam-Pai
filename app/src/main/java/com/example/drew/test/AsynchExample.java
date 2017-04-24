@@ -24,7 +24,7 @@ import java.nio.charset.Charset;
 
 public class AsynchExample extends Activity {
 
-    private String rightNipple;
+    private String rightCookie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class AsynchExample extends Activity {
 
     public String activate(){
         new AsyncCaller().execute();
-        return rightNipple;
+        return rightCookie;
     }
 
     @Override
@@ -45,6 +45,9 @@ public class AsynchExample extends Activity {
 
     private class AsyncCaller extends AsyncTask<Void, Void, Void>
     {
+        public AsyncCaller() {
+            super();
+        }
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -55,7 +58,7 @@ public class AsynchExample extends Activity {
 
             //this method will be running on background thread so don't update UI frome here
             //do your long running http tasks here,you dont want to pass argument and u can access the parent class' variable url over here
-            JSONObject json = null;
+            JSONObject json = new JSONObject();
             try {
                 json = readJsonFromUrl("https://3bb4690e.ngrok.io");
             } catch (IOException e) {
@@ -63,26 +66,18 @@ public class AsynchExample extends Activity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            System.out.println(json.toString);
-            rightNipple = json.toString();
-            try {
-                System.out.println(json.get("name"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-//            Toast.makeText(getApplicationContext(), json.toString(),
-//                    Toast.LENGTH_LONG).show();
+            rightCookie = json.toString();
+            System.out.println(rightCookie + "this worked");
             return null;
         }
 
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            ///Toast.makeText(getApplicationContext(), rightNipple.toString() + "Fish",
-             //       Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(), rightNipple.toString() + "Fish",
+//                    Toast.LENGTH_LONG).show();
             //this method will be running on UI thread
         }
-
     }
 
     private static String readAll(Reader rd) throws IOException {

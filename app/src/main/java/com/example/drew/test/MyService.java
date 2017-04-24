@@ -26,7 +26,7 @@ import java.nio.charset.Charset;
 public class MyService extends IntentService {
 
     public static Object get;
-    public static String leftNipple = "cookie";
+    public static String rightCookie = "cookie";
     public static SuperFishy superfish;
 
     public SuperFishy getSuperfish() {
@@ -68,18 +68,18 @@ public class MyService extends IntentService {
                     e.printStackTrace();
                 }
                 System.out.println(json.toString());
-                leftNipple = json.toString();
+                rightCookie = json.toString();
                 try {
                     System.out.println(json.get("app_id"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                leftNipple = "no working";
+                rightCookie = "no working";
                 superfish = new SuperFishy();
-                superfish.setFish(leftNipple);
-                intent.putExtra("data", leftNipple);
-                Toast.makeText(getApplicationContext(), "Help",
-                        Toast.LENGTH_LONG).show();
+                superfish.setFish(rightCookie);
+                intent.putExtra("data", rightCookie);
+//                Toast.makeText(getApplicationContext(), "Help",
+//                        Toast.LENGTH_LONG).show();
                 LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
             }
             finally{
@@ -88,9 +88,9 @@ public class MyService extends IntentService {
         }
         catch(Exception e) {
             Log.e("ERROR", e.getMessage(), e);
-            leftNipple = "the url is broken";
-            Toast.makeText(getApplicationContext(), "the url is broken",
-                    Toast.LENGTH_LONG).show();
+            rightCookie = "the url is broken";
+//            Toast.makeText(getApplicationContext(), "the url is broken",
+//                    Toast.LENGTH_LONG).show();
         }
     }
 
