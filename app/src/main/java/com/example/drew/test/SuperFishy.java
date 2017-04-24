@@ -5,4 +5,22 @@ package com.example.drew.test;
  */
 
 public class SuperFishy {
+    String fish;
+
+    public SuperFishy(String fish) {
+        this.fish = fish;
+    }
+
+    public SuperFishy() {
+
+    }
+
+    public String getFish() {
+
+        return fish;
+    }
+
+    public void setFish(String fish) {
+        this.fish = fish;
+    }
 }

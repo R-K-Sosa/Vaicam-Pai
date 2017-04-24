@@ -26,5 +26,30 @@
         android:layout_below="@+id/youtube_player_view"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="183dp"
+        android:textSize="25dp"
+        android:background="@drawable/border"
+        android:text="Woman :           0.999823 " />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="250dp"
+        android:layout_marginTop="15dp"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:height="50dp"
+        android:text="Predictions"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignStart="@+id/bn"
+        android:layout_marginBottom="72dp" />
+
 
 </RelativeLayout>

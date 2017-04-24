@@ -18,6 +18,15 @@ import org.json.JSONObject;
 
 public class JsonReader {
 
+    String leftNipple;
+
+    public JsonReader() throws JSONException, IOException{
+        JSONObject json = readJsonFromUrl("https://105ba16f.ngrok.io/");
+        System.out.println(json.toString());
+        leftNipple = json.toString();
+        System.out.println(json.get("id"));
+    }
+
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
@@ -39,10 +48,5 @@ public class JsonReader {
         }
     }
 
-    public static void main(String[] args) throws IOException, JSONException {
-        JSONObject json = readJsonFromUrl("https://105ba16f.ngrok.io/");
-        System.out.println(json.toString());
-        System.out.println(json.get("id"));
-    }
 }
 

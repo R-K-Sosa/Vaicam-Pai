@@ -21,7 +21,6 @@ android {
     lintOptions {
         lintConfig rootProject.file('gradle/lint.xml')
     }
-    useLibrary 'org.apache.http.legacy'
 }
 
 dependencies {
@@ -31,9 +30,7 @@ dependencies {
     })
     compile files('libs/YouTubeAndroidPlayerApi.jar')
     compile 'com.android.support:appcompat-v7:25.3.0'
-    compile 'com.clarifai.clarifai-api2:core:2.2.3'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
+    //compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
 
 
