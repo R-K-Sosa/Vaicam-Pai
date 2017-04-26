@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.example.drew.test"
+        applicationId "drew.test"
         minSdkVersion 19 //19 kitkat upgrade
         targetSdkVersion 25
         versionCode 1
