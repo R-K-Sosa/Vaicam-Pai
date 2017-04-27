@@ -172,7 +172,7 @@ public class MainActivity extends YouTubeBaseActivity {
         }
 
 
-        // method that reads from our api, turns it into the json object. 
+        // method that reads from our api, turns it into the json object.
         public JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
             InputStream is = new URL(url).openStream();
             try {
