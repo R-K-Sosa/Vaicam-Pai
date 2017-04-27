@@ -31,11 +31,12 @@ import java.nio.charset.Charset;
 
 
 public class MainActivity extends YouTubeBaseActivity {
+    // declare our objects
     YouTubePlayerView youtubePlayerView;
     Button button;
-
     YouTubePlayer.OnInitializedListener onInitializedListener;
 
+    //our broadcast receiever, recieves data from MyService.java
     public BroadcastReceiver mMessageReceiverTest = new BroadcastReceiver() {
 
         public void onReceive(Context context, Intent intent) {
@@ -44,13 +45,10 @@ public class MainActivity extends YouTubeBaseActivity {
             Toast.makeText(getApplicationContext(), "Received",
                     Toast.LENGTH_LONG).show();
 
-//            textView.setText(mellow.activate() + "....hello");
-//            System.out.println(mellow.activate() + "....hello");
-//            Toast.makeText(getApplicationContext(), mellow.activate(),
-//                    Toast.LENGTH_LONG).show();
         }
     };
 
+    //Constructor
     public MainActivity() throws IOException, JSONException {
     }
 
@@ -64,21 +62,28 @@ public class MainActivity extends YouTubeBaseActivity {
 
         tv = (TextView) findViewById(R.id.textView);
 
+        // starts our asynchronous task,
         AsyncCaller mellow = new AsyncCaller(this);
         mellow.execute();
 
+        //creates the play button for the video stream
         button = (Button) findViewById(R.id.bn);
         youtubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player_view);
 
+        // receives the broadcast from our Service
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiverTest,
                 new IntentFilter("custom-event-name"));
 
+
+        //configures our service to parse our api
         Intent mServiceIntent = new Intent(getApplicationContext(), MyService.class);
         mServiceIntent.setData(Uri.parse("https://3bb4690e.ngrok.io"));
         getApplicationContext().startService(mServiceIntent);
 
         mMessageReceiverTest.onReceive(getBaseContext(), mServiceIntent);
 
+
+        // interacts with the youtube java api library, loads stream, displays it
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
@@ -90,6 +95,8 @@ public class MainActivity extends YouTubeBaseActivity {
             }
         };
 
+
+        // grab our api key from COnfig.java
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,6 +106,7 @@ public class MainActivity extends YouTubeBaseActivity {
     }
 
 
+    // our asynchronous task
     private class AsyncCaller extends AsyncTask<Void, String, Void>
     {
         MainActivity ma;
@@ -108,11 +116,14 @@ public class MainActivity extends YouTubeBaseActivity {
             super();
         }
 
+        //constructor
         public AsyncCaller(MainActivity ma) {
             super();
             this.ma = ma;
         }
 
+
+        // runs at the start of the app
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -121,8 +132,7 @@ public class MainActivity extends YouTubeBaseActivity {
         @Override
         protected Void doInBackground(Void... params) {
 
-            //this method will be running on background thread so don't update UI frome here
-            //do your long running http tasks here,you dont want to pass argument and u can access the parent class' variable url over here
+            // grabs json data using json library
             JSONObject json = new JSONObject();
             try {
                 json = readJsonFromUrl("https://3bb4690e.ngrok.io"); //original link >>> https://3bb4690e.ngrok.io
@@ -131,31 +141,27 @@ public class MainActivity extends YouTubeBaseActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            //converts the json array in object form to a string.
             rightCookie = json.toString();
+            // publishes to onProgressUpdate
             this.publishProgress(rightCookie);
-            System.out.println(rightCookie + "this worked");
             return null;
         }
 
         @Override
         protected void onProgressUpdate(String... values){
             super.onProgressUpdate(values);
-            System.out.println(rightCookie + "asdf");
-            //78 and 79 are very special, maybe you can get them to work :) set text in asyncTask https://www.quandl.com/api/v3/datasets/ODA/PBARL_USD.json?api_key=E-f4bGCzj_cGGgo-6RsR
+            // gets the progress published by doInBackground, sets it as a textview
             TextView textView = (TextView) ma.findViewById(R.id.textView);
-            textView.setText(rightCookie + "....hello");
+            textView.setText(rightCookie);
         }
 
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-//            TextView textView = (TextView) findViewById(R.id.textView);
-//            textView.setText(rightCookie + "....hello");
-
-            //this method will be running on UI thread
         }
 
-
+        // reads in data, sets it as a string, called by readjsonfromurl
         private String readAll(Reader rd) throws IOException {
             StringBuilder sb = new StringBuilder();
             int cp;
@@ -165,6 +171,8 @@ public class MainActivity extends YouTubeBaseActivity {
             return sb.toString();
         }
 
+
+        // method that reads from our api, turns it into the json object. 
         public JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
             InputStream is = new URL(url).openStream();
             try {

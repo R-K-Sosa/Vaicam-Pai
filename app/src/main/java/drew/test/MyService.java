@@ -50,8 +50,6 @@ public class MyService extends IntentService {
                 String line;
 
                 while ((line = bufferedReader.readLine()) != null) {
-//                    Toast.makeText(getApplicationContext(), line,
-//                            Toast.LENGTH_LONG).show();
                     stringBuilder.append(line).append("\n");
                 }
                 bufferedReader.close();
@@ -75,8 +73,6 @@ public class MyService extends IntentService {
                 superfish = new SuperFishy();
                 superfish.setFish(rightCookie);
                 intent.putExtra("data", rightCookie);
-//                Toast.makeText(getApplicationContext(), "Help",
-//                        Toast.LENGTH_LONG).show();
                 LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
             }
             finally{
@@ -86,8 +82,6 @@ public class MyService extends IntentService {
         catch(Exception e) {
             Log.e("ERROR", e.getMessage(), e);
             rightCookie = "the url is broken";
-//            Toast.makeText(getApplicationContext(), "the url is broken",
-//                    Toast.LENGTH_LONG).show();
         }
     }
 
