@@ -77,7 +77,7 @@ public class MainActivity extends YouTubeBaseActivity {
 
         //configures our service to parse our api
         Intent mServiceIntent = new Intent(getApplicationContext(), MyService.class);
-        mServiceIntent.setData(Uri.parse("http://4d627594.ngrok.io/"));
+        mServiceIntent.setData(Uri.parse("http://5e70cf5e.ngrok.io/"));
         getApplicationContext().startService(mServiceIntent);
 
         mMessageReceiverTest.onReceive(getBaseContext(), mServiceIntent);
@@ -87,7 +87,7 @@ public class MainActivity extends YouTubeBaseActivity {
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("DquyRJvuxWc");
+                youTubePlayer.loadVideo("susJk9sG3s8");
             }
 
             @Override
@@ -136,7 +136,7 @@ public class MainActivity extends YouTubeBaseActivity {
             // grabs json data using json library
             JSONObject json = new JSONObject();
             try {
-                json = readJsonFromUrl("http://4d627594.ngrok.io/");
+                json = readJsonFromUrl("http://5e70cf5e.ngrok.io/");
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
