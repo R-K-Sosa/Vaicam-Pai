@@ -21,9 +21,11 @@ def hello():
 
     result = model.predict_by_filename(newest)
 
-    wordbank.update(result.get("outputs")[0].get("data").get("concepts")[0])
+    # wordbank = (result.get("outputs")[0].get("data").get("concepts")[0].get("name")) + "         "+ str(result.get("outputs")[0].get("data").get("concepts")[0].get("value")) + "}"
 
-    return jsonify(wordbank)
+
+    wordbank = (result.get("outputs")[0].get("data").get("concepts")[0])
+    return jsonify(wordbank )
 
 if __name__ == "__main__":
     app.run()

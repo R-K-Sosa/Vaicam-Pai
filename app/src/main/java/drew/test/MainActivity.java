@@ -111,6 +111,7 @@ public class MainActivity extends YouTubeBaseActivity {
     {
         MainActivity ma;
         String rightCookie;
+        String leftCookie;
 
         public AsyncCaller() {
             super();
@@ -135,16 +136,22 @@ public class MainActivity extends YouTubeBaseActivity {
             // grabs json data using json library
             JSONObject json = new JSONObject();
             try {
-                json = readJsonFromUrl("https://3bb4690e.ngrok.io"); //original link >>> https://3bb4690e.ngrok.io
+                json = readJsonFromUrl("https://3bb4690e.ngrok.io");
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             //converts the json array in object form to a string.
-            rightCookie = json.toString();
+            try {
+                rightCookie = json.getString("name");
+                leftCookie = json.getString("value");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             // publishes to onProgressUpdate
             this.publishProgress(rightCookie);
+            this.publishProgress(leftCookie);
             return null;
         }
 
@@ -153,7 +160,7 @@ public class MainActivity extends YouTubeBaseActivity {
             super.onProgressUpdate(values);
             // gets the progress published by doInBackground, sets it as a textview
             TextView textView = (TextView) ma.findViewById(R.id.textView);
-            textView.setText(rightCookie);
+            textView.setText(rightCookie + "       " + leftCookie);
         }
 
         @Override
@@ -171,7 +178,6 @@ public class MainActivity extends YouTubeBaseActivity {
             return sb.toString();
         }
 
-
         // method that reads from our api, turns it into the json object.
         public JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
             InputStream is = new URL(url).openStream();
@@ -184,9 +190,5 @@ public class MainActivity extends YouTubeBaseActivity {
                 is.close();
             }
         }
-
     }
-
-
-
 }
