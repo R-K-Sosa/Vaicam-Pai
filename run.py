@@ -13,11 +13,11 @@ app.config['DEBUG'] = True
 @app.route("/")
 def hello():
     wordbank = {}
-    app = ClarifaiApp('3sV5ZqH5HPz-obqWgk8m7iBHHf41IDhHHr_wUGaT', '91Mg1OCiSKYMemuJWt5GBWmK-FKmxOQ3DJmarLuY')
+    app = ClarifaiApp('UzbdCFxqhjb6JL94ogmugfWnfEKAJ7WGSeOe1GiQ', '_RkOzOu9L0ZTdVdIGKQcZKSuAnamobafUWZwpP8H')
 
-    model = app.models.get('aaa03c23b3724a16a56b629203edc62c')
+    model = app.models.get('bc2c1be334f44095b8c214cdf2dc8fbe')
 
-    newest = min(glob.iglob('*.jpg'), key=os.path.getctime)
+    newest = min(glob.iglob('*.png'), key=os.path.getctime)
 
     result = model.predict_by_filename(newest)
 

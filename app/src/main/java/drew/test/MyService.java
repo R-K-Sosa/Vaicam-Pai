@@ -42,7 +42,7 @@ public class MyService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         try {
-            URL url = new URL("https://3bb4690e.ngrok.io");
+            URL url = new URL("http://4d627594.ngrok.io/");
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             try {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -56,7 +56,7 @@ public class MyService extends IntentService {
                 Intent intention = new Intent("custom-event-name");
                 JSONObject json = null;
                 try {
-                    json = readJsonFromUrl("https://3bb4690e.ngrok.io");
+                    json = readJsonFromUrl("http://4d627594.ngrok.io/");
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
