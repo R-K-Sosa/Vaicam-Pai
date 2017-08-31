@@ -23,7 +23,7 @@ public class JsonReader {
     public JsonReader() throws JSONException, IOException{
         JSONObject json = readJsonFromUrl("https://105ba16f.ngrok.io/");
         System.out.println(json.toString());
-        leftNipple = json.toString();
+        left = json.toString();
         System.out.println(json.get("id"));
     }
 
