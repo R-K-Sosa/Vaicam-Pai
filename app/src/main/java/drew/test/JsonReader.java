@@ -18,7 +18,7 @@ import org.json.JSONObject;
 
 public class JsonReader {
 
-    String leftNipple;
+    String left;
 
     public JsonReader() throws JSONException, IOException{
         JSONObject json = readJsonFromUrl("https://105ba16f.ngrok.io/");
